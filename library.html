@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objects</title>
+</head>
+<body>
+    <button id="modal_form" class="modal_form_button">Add New Book</button>
+    <dialog id="form_dialog">
+    <div class="book_input_form_div" id="book_form_div">
+        
+        <h1>Enter New Book</h1>
+         
+            <form id="book_form" class="book_form">
+                <input type="text" class="form_input" id="title" required placeholder="title"/>
+                <input type="text" class="form_input" id="author"required placeholder="Author"/>
+                <input type="number" class="form_input" id="pages" required="pages"/>
+                
+                <select id="status">Status
+                    <option value="Read">Read</option>
+                    <option value="Unread"> Unread</option>
+                </select>
+                <input type="submit" id="form_submit_button"/>
+                
+            </form>
+
+            
+            <button id="cancel">Cancel</button>
+    </dialog>
+    </div>
+    <table id="book_display">
+        <caption>Your Books</caption>
+        <colgroup>
+            <col id="title">
+            <col id="author">
+            <col id="pages">
+            <col id="read">
+
+        </colgroup>
+
+        <thead>
+            <tr>
+                <th scope="col" id="col_title">Title</th>
+                <th scope="col" id="col_author">Author</th>
+                <th scope="col" id="col_pages">Pages</th>
+                <th scope="col" id="delete">Delete</th>
+                <th scope="col" id="change_status"> Status</th>
+
+            </tr>
+        </thead>
+        <tbody id="display_book">
+
+        </tbody>
+    </table>
+
+ 
+
+    <script src="objects.js"></script>
+</body>
+</html>
