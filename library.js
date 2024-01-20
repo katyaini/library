@@ -9,8 +9,9 @@ const dialog = document.getElementById("form_dialog");
 const cancel = document.getElementById("cancel");
 const inputForm = document.getElementById("book_form");
 
+//BOOK FUNCTIONS
 
-
+//BOOK OBJECT CONSTRUCTOR FUNCTION
 function Books(title,author,pages,isRead,bookID){
     this.title=title;
     this.author=author;
@@ -25,22 +26,17 @@ function getBookFromInput(e){
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value;
     const isRead = document.querySelector("#status").value;
-    
     bookId=bookID++;
-    
     return new Books(title,author,pages,isRead,bookID);
 }
-/
 
 function addBookToLibrary(book){
    myLibrary.push(book);
-  
 }
    
 function addBook(){
     addBookToLibrary(getBookFromInput());
     displayBook(myLibrary);
-    
 }
 
 inputForm.addEventListener("submit",(e)=>{
@@ -48,7 +44,7 @@ inputForm.addEventListener("submit",(e)=>{
     addBook();
 });
 
-    
+// INPUT FORM POP-UP TO ADD BOOKS
 modal.addEventListener("click",(e)=>{
     dialog.showModal();
 });
@@ -69,10 +65,9 @@ function clearTable(table){
     }
 }
 
+// FUNCTION TO DISPLAY BOOK IN TABLE
 function displayBook(myLibrary){
-    clearTable(tables);
-    
-    
+    clearTable(tables);   
     for(let book in myLibrary){
         let row = document.createElement("tr");
         tables.appendChild(row);
@@ -105,14 +100,10 @@ function displayBook(myLibrary){
             statusIcon.id = myLibrary[book].bookID
             cell.appendChild(statusIcon);
             changeStatus(statusIcon);
-
-            
-           
-
-
         }
     }}}
 
+// FUNCTION TO DELETE BOOK FROM TABLE AND LIBRARY
     function setRemove(icon){
         icon.addEventListener("click",()=>{
         
@@ -123,12 +114,12 @@ function displayBook(myLibrary){
             let bookIndex = myLibrary.indexOf(myLibrary[book]);
             myLibrary.splice(bookIndex,1);
             icon.parentElement.parentElement.remove();
-            console.log(myLibrary);
             }
-        }
-      
+        }      
     })
 };
+
+//FUNCTION TO CHANGE READ/UNREAD STATUS
 function changeStatus(icon){
     
     icon.addEventListener("click",()=>{
@@ -140,18 +131,12 @@ function changeStatus(icon){
             if(myLibrary[book].isRead === "Read"){
                 myLibrary[book].isRead = "Unread";
                 icon.innerHTML="Unread";
-
             }
             else{
                 myLibrary[book].isRead = "Read";
                 icon.innerHTML="Read";
             }
-        
-        
-        console.log(myLibrary);
-        console.log(icon);
         }
     }
-  
 })
 };
