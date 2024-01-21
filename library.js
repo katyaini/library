@@ -42,6 +42,7 @@ function addBook(){
 inputForm.addEventListener("submit",(e)=>{
     e.preventDefault();
     addBook();
+    clearField();
 });
 
 // INPUT FORM POP-UP TO ADD BOOKS
@@ -51,6 +52,7 @@ modal.addEventListener("click",(e)=>{
 
 cancel.addEventListener("click",(e)=>{
     dialog.close();
+    clearField();
 });
 
 function clearField(){
@@ -88,8 +90,9 @@ function displayBook(myLibrary){
             
             case 3 :
                 let delIcon = document.createElement("Button");
-                delIcon.innerHTML="delete";
+                delIcon.innerHTML="Delete";
                 delIcon.id=myLibrary[book].bookID;
+                delIcon.className = "delete_icon";
                 cell.appendChild(delIcon);
                setRemove(delIcon);
                break;
@@ -97,7 +100,9 @@ function displayBook(myLibrary){
             let statusIcon = document.createElement("Button");
             statusIcon.innerHTML=  myLibrary[book].isRead;
             statusIcon.id=myLibrary[book].bookID;
-            statusIcon.id = myLibrary[book].bookID
+            statusIcon.id = myLibrary[book].bookID;
+            statusIcon.classList.add(statusIcon.innerHTML,"status_icon");
+            //statusIcon.className="status_icon";
             cell.appendChild(statusIcon);
             changeStatus(statusIcon);
         }
@@ -131,12 +136,21 @@ function changeStatus(icon){
             if(myLibrary[book].isRead === "Read"){
                 myLibrary[book].isRead = "Unread";
                 icon.innerHTML="Unread";
-            }
+                if(icon.classList.contains("Read")){
+                    icon.classList.remove("Read");
+                    icon.classList.add("Unread");
+                     }
+                }
             else{
                 myLibrary[book].isRead = "Read";
                 icon.innerHTML="Read";
-            }
+                icon.classList.add("read");
+                if(icon.classList.contains("Unread")){
+                    icon.classList.remove("Unread");
+                    icon.classList.add("Read");  
+                 }
+                }  
         }
     }
-})
+   });
 };

@@ -4,33 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>objects</title>
+    <link rel="stylesheet" href="library.css"/>
 </head>
 <body>
-    <button id="modal_form" class="modal_form_button">Add New Book</button>
+    <div class="header">
+    <div class="heading">
+      <h1> The Odin Library</h1>
+     </div>
+     <button id="modal_form" class="modal_form_button">+</button>
+    </div>
+    
     <dialog id="form_dialog">
+        <h2>Enter New Book</h2>
     <div class="book_input_form_div" id="book_form_div">
         
-        <h1>Enter New Book</h1>
+       
          
             <form id="book_form" class="book_form">
-                <input type="text" class="form_input" id="title" required placeholder="title"/>
-                <input type="text" class="form_input" id="author"required placeholder="Author"/>
+                
+                <div class="book_form_div">
+                <label for="title">Book Title:</label>
+                <input type="text" class="form_input" id="title" required />
+                <label for ="author">Author:</label>
+                <input type="text" class="form_input" id="author"required />
+                <label for="pages">Pages:</label>
                 <input type="number" class="form_input" id="pages" required="pages"/>
-                
+                </div>
+
+                <div class="select_Container">
                 <select id="status">Status
-                    <option value="Read">Read</option>
-                    <option value="Unread"> Unread</option>
+                    <option value="Read" >Read</option>
+                    <option value="Unread" > Unread</option>
+                    
                 </select>
-                <input type="submit" id="form_submit_button"/>
-                
-            </form>
+                </div>
+                <div class="submit">
+                    <input type="submit" id="form_submit_button"/>
+                    
+               </div>
 
             
-            <button id="cancel">Cancel</button>
+                </form>
+                <div class="cancel_button">
+                    
+                    <button id="cancel">Cancel</button>
+                 </div>
+
+            
+            
     </dialog>
     </div>
+ <section class="container">
+    
+    <div class="your_book">
+        <h2>Your Books</h2>
+    </div>
     <table id="book_display">
-        <caption>Your Books</caption>
+    
+    
         <colgroup>
             <col id="title">
             <col id="author">
@@ -38,8 +69,10 @@
             <col id="read">
 
         </colgroup>
+    
 
         <thead>
+        
             <tr>
                 <th scope="col" id="col_title">Title</th>
                 <th scope="col" id="col_author">Author</th>
@@ -48,11 +81,14 @@
                 <th scope="col" id="change_status"> Status</th>
 
             </tr>
+       
         </thead>
         <tbody id="display_book">
 
         </tbody>
     </table>
+
+</section>
 
 
     <script src="library.js"></script>
